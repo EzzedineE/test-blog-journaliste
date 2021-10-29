@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { UserService } from '../service/user.service';
 
 @Component({
@@ -22,7 +23,7 @@ export class RegisterComponent implements OnInit {
   register() {
     if (this.userForm.valid) {
       if (this.services.verifEmail(this.userForm.value.email)) {
-        alert('E-mail Existant');
+        this.toastr.error('E-mail Existant', 'error');
       } else {
         this.services.ajoutUser(this.userForm.value);
         this.router.navigate(['login']);
@@ -30,7 +31,11 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  constructor(private services: UserService, private router: Router) {}
+  constructor(
+    private services: UserService,
+    private router: Router,
+    private toastr: ToastrService
+  ) {}
 
   ngOnInit(): void {}
 }

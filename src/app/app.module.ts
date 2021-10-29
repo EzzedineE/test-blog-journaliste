@@ -11,6 +11,8 @@ import { HomeComponent } from './home/home.component';
 import { AddArticleComponent } from './addArticle/add-article.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FilterPipe } from './pipes/filter.pipe';
+import { CommonModule } from '@angular/common';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
+    CommonModule,
+    ToastrModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

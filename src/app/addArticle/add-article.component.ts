@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Articles } from '../models/articles';
 import { ArticlesService } from '../service/articles.service';
 
@@ -24,14 +25,15 @@ export class AddArticleComponent implements OnInit {
         this.router.navigate(['']);
       }
     } else {
-      alert('aaaa');
+      this.toastr.error('entre invalid', 'error');
     }
   }
 
   constructor(
     private services: ArticlesService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
