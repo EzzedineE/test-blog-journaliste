@@ -1,0 +1,118 @@
+<div class="container">
+  <main>
+    <div class="py-5 text-center">
+      <div><i class="fab fa-quinscape fa-5x text-warning"></i></div>
+      <h1 class="text-success mt-5">Register</h1>
+    </div>
+
+    <div>
+      <div class="d-flex justify-content-center">
+        <form
+          class="needs-validation"
+          [formGroup]="userForm"
+          (ngSubmit)="register()"
+        >
+          <div class="row g-3">
+            <!-- input nom -->
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label"><b>NOM</b></label>
+              <input type="text" class="form-control" formControlName="nom" />
+              <div
+                *ngIf="
+                  userForm.controls.nom.invalid && userForm.controls.nom.touched
+                "
+              >
+                <small
+                  *ngIf="userForm.controls.nom.errors?.required"
+                  class="text-danger"
+                  >Valid first name is required.</small
+                >
+              </div>
+            </div>
+            <!-- input prenom -->
+
+            <div class="col-sm-6">
+              <label for="lastName" class="form-label"><b>PRENOM</b></label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="prenom"
+              />
+              <div
+                *ngIf="
+                  userForm.controls.prenom.invalid &&
+                  userForm.controls.prenom.touched
+                "
+              >
+                <small
+                  *ngIf="userForm.controls.prenom.errors?.required"
+                  class="text-danger"
+                  >Valid last name is required.</small
+                >
+              </div>
+            </div>
+            <!-- input email -->
+            <div class="col-12">
+              <label for="email" class="form-label"><b>Email</b> </label>
+              <input
+                type="email"
+                class="form-control"
+                placeholder="you@example.com"
+                formControlName="email"
+              />
+              <div
+                *ngIf="
+                  userForm.controls.email.invalid &&
+                  userForm.controls.email.touched
+                "
+              >
+                <small
+                  *ngIf="userForm.controls.email.errors?.pattern"
+                  class="text-danger"
+                  >Please enter a valid email address for shipping
+                  updates</small
+                >
+                <small
+                  *ngIf="userForm.controls.email.errors?.required"
+                  class="text-danger"
+                  >Your Email is required.</small
+                >
+              </div>
+            </div>
+            <!-- input password -->
+            <div class="col-12">
+              <label for="username" class="form-label"
+                ><b>MOT DE PASSE</b>
+              </label>
+
+              <input
+                type="password"
+                class="form-control"
+                placeholder="password"
+                formControlName="password"
+              />
+              <div
+                *ngIf="
+                  userForm.controls.password.invalid &&
+                  userForm.controls.password.touched
+                "
+              >
+                <small
+                  *ngIf="userForm.controls.password.errors?.required"
+                  class="text-danger"
+                  >Your password is required.</small
+                >
+              </div>
+            </div>
+          </div>
+
+          <hr class="my-4" />
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">
+            Enregistrer
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
